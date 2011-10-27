@@ -347,14 +347,28 @@ void display(void)
 		draw_crank();
     glPopMatrix();
 
+	//glTranslatef(16.0, 8.5, -10.3);		
+		//glTranslatef(-5.0, 0.0, 0.0);
+
 	glPushMatrix();
-		glTranslatef(8.0, 10.0, -11.3);		
-		glRotatef((3* -head_angle), 0.0, 0.0, 1.0);
+	glTranslatef(7.7, 8.5, -10.3);	
+	//glTranslatef(-5.0, 0.0, 0.0);
+	glPushMatrix();
+		glPushMatrix();
+			glRotatef(angle, 0.0, 0.0, 1.0);
+			glTranslatef(3.5, 0.0, 0.0);
+			glCallList(handle);
+		glPopMatrix();
+	glPopMatrix();
+	glPopMatrix();
+
+	glPushMatrix();
+		glTranslatef(12.8, 8.5, -12.3);		
+		//glRotatef((3* -head_angle), 0.0, 0.0, 1.0);
 		glTranslatef(-5.0, 0.0, 0.0);
 		glPushMatrix();
-			glRotatef(90, 0.0, 1.0, 0.0);
-			//glCallList(assem_handle);
-			glPopMatrix();
+		glutSolidCylinder(0.25, 4.0, 100, 100);
+		glPopMatrix();
 	glPopMatrix();
 
    glPushMatrix();
@@ -367,22 +381,7 @@ void display(void)
 			glTranslatef(0.0, 0.0, -4.0);
 			glCallList(handle_cage);
 		glPopMatrix();
-	glPopMatrix();
-
-   
-		//glCallList(handle);
-
-		/*glPushMatrix();
-		glRotatef(180, 0.0, 1.0, 0.0);
-		glTranslatef(-0.1, 6.1, -0.855);
-		glCallList(handle);
-		glPopMatrix();
-
-
-		glTranslatef(3.9, 6.1, 0.63);
-		glScalef(7.0, 0.5, 0.1);
-		cube();*/
-	
+	glPopMatrix();	
   
 
    glutSwapBuffers();
@@ -394,39 +393,69 @@ void draw_handle()
 {
 	handle = glGenLists(6);
 	glNewList(handle, GL_COMPILE);
-	   glPushMatrix();
-	   glRotatef(30, 0.0, 1.0, 0.0);
-	   glTranslatef(0.1, 0.0, 0.0);
-		glScalef(1.2, 0.5, 0.1);
-		cube();
+		glPushMatrix();
+		
+		glTranslatef(0.0, 0.0, 0.0);
+		glRotatef(30, 0.0, 1.0, 0.0);
+	   glScalef(1.5, 0.8, 0.1);
+	   cube();
+	   glPopMatrix();
+
+	   	glPushMatrix();
+		glTranslatef(0.0, 0.0, 0.8);
+		glRotatef(-30, 0.0, 1.0, 0.0);
+	   glScalef(1.5, 0.8, 0.1);
+	   cube();
 	   glPopMatrix();
 
 	   glPushMatrix();
-	   //glRotatef(30, 0.0, 1.0, 0.0);
-	   glTranslatef(0.6, 0.0, 0.75);
-	   glutSolidCylinder(0.3, 0.10, 100, 100);
+	   glTranslatef(0.8, 0.0, 1.15);
+	   glutSolidCylinder(0.45, 0.1, 100, 100);
 	   glPopMatrix();
 
 	   glPushMatrix();
-	   //glRotatef(30, 0.0, 1.0, 0.0);
-	   glTranslatef(0.6, 0.0, -0.4);
-	   glutSolidCylinder(0.3, 0.10, 100, 100);
-	   glPopMatrix();
-
-
-	   glPushMatrix();
-	   //glRotatef(30, 0.0, 1.0, 0.0);
-	   glTranslatef(0.6, 0.0, -2.8);
-	   glutSolidCylinder(0.2, 6.00, 100, 100);
+	   glTranslatef(0.8, 0.0, -0.45);
+	   glutSolidCylinder(0.45, 0.1, 100, 100);
 	   glPopMatrix();
 
 	   glPushMatrix();
-	   glRotatef(-30, 0.0, 1.0, 0.0);
-	   glTranslatef(0.34, 0.0, 0.4);
-		glScalef(1.2, 0.5, 0.1);
-		cube();
+	   glTranslatef(-7.0, 0.0, 0.0);
+		glRotatef(-30, 0.0, 1.0, 0.0);
+	   glScalef(1.5, 0.8, 0.1);
+	   cube();
 	   glPopMatrix();
-   
+
+	   	glPushMatrix();
+		glTranslatef(-7.0, 0.0, 0.8);
+		glRotatef(30, 0.0, 1.0, 0.0);
+	   glScalef(1.5, 0.8, 0.1);
+	   cube();
+	   glPopMatrix();
+
+	   glPushMatrix();
+	   glTranslatef(-7.8, 0.0, 1.15);
+	   glutSolidCylinder(0.45, 0.1, 100, 100);
+	   glPopMatrix();
+
+	   glPushMatrix();
+	   glTranslatef(-7.8, 0.0, -0.45);
+	   glutSolidCylinder(0.45, 0.1, 100, 100);
+	   glPopMatrix();
+
+	   glPushMatrix();
+	   glTranslatef(-7.8, 0.0, -3.0);
+	   glutSolidCylinder(0.25, 7.0, 100, 100);
+	   glPopMatrix();
+
+	   glPushMatrix();
+	   glTranslatef(0.8, 0.0, -3.0);
+	   glutSolidCylinder(0.25, 7.0, 100, 100);
+	   glPopMatrix();
+
+	   glPushMatrix();
+		glTranslatef(-3.5, 0.0, 0.4);
+	   glScalef(6.0, 0.8, 0.1);
+	   cube();
 	   glPopMatrix();
 	glEndList();
 
@@ -538,7 +567,7 @@ void mouse (int button, int state, int x, int y)
     case GLUT_LEFT_BUTTON:
 		if (state == GLUT_DOWN) {
 			eyez += 5.0;
-		  animation();
+		 // animation();
 		  glutPostRedisplay();
 		}
       break;
@@ -555,8 +584,8 @@ void mouse (int button, int state, int x, int y)
 
 static void idle(void)
 {
-	/*animation();
-	angle = angle + 2;*/
+	//animation();
+	angle = angle + 0.5;
 
 	
 	glutPostRedisplay();
